@@ -48,17 +48,17 @@ body {
     text-transform: uppercase;
     font-size: 0.85rem;
     letter-spacing: 0.5px;
-    padding: 16px 20px; /* Grand espace intérieur pour aérer */
+    padding: 16px 20px;
     border-bottom: 2px solid #e9ecef;
     text-align: left;
 }
 
 /* Style des cellules de données */
 #tableau-csv-alcool td {
-    padding: 16px 20px; /* Grand espace intérieur pour chaque ligne */
+    padding: 16px 20px;
     border-bottom: 1px solid #eee;
     color: #495057;
-    vertical-align: middle; /* Centre verticalement le texte par rapport à l'image */
+    vertical-align: middle;
 }
 
 /* Effet de survol sur les lignes */
