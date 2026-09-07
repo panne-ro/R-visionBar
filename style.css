@@ -29,6 +29,52 @@ body {
     cursor: pointer;
 }
 
+#tableau-csv-alcool {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 1200px; /* Évite que le tableau soit trop étiré sur grand écran */
+    margin: 30px auto; /* Centre le tableau et l'écarte du contenu du dessus */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Effet d'ombre léger */
+    border-radius: 8px;
+    overflow: hidden; /* Arrondit les angles du tableau */
+}
+
+/* Style des cellules de titre (En-têtes) */
+#tableau-csv-alcool th {
+    background-color: #f8f9fa;
+    color: #333;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    padding: 16px 20px; /* Grand espace intérieur pour aérer */
+    border-bottom: 2px solid #e9ecef;
+    text-align: left;
+}
+
+/* Style des cellules de données */
+#tableau-csv-alcool td {
+    padding: 16px 20px; /* Grand espace intérieur pour chaque ligne */
+    border-bottom: 1px solid #eee;
+    color: #495057;
+    vertical-align: middle; /* Centre verticalement le texte par rapport à l'image */
+}
+
+/* Effet de survol sur les lignes */
+#tableau-csv-alcool tr:hover {
+    background-color: #fdfdfd;
+}
+
+/* Style spécifique pour l'image */
+#tableau-csv-alcool img {
+    display: block;
+    max-width: 80px; /* Taille maximale de l'image */
+    height: auto;
+    border-radius: 6px; /* Angles légèrement arrondis sur l'image */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Ombre douce sous l'image */
+}
+
 main {
     padding-bottom: 60px;
 }
