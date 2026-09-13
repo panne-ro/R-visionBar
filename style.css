@@ -1,5 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500&display=swap');
+:root {
+    --fond-principal: #0d0d0d;
+    --fond-carte: #1a1a1a;
+    --dore: #c9a15a;
+    --dore-clair: #e0c584;
+    --texte-clair: #f5f5f0;
+    --texte-attenue: #a8a8a0;
+    --ombre: rgba(0, 0, 0, 0.5);
+}
+
 body {
-    background-color: lightcyan;
+    background-color: var(--fond-principal);
+    color: var(--texte-clair);
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+}
+
+header {
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid rgba(201, 161, 90, 0.2);
+}
+
+header h1 {
+    font-family: 'Playfair Display', serif;
+    color: var(--dore);
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin: 0;
 }
 
 .page {
@@ -29,50 +57,153 @@ body {
     cursor: pointer;
 }
 
-#tableau-csv-alcool {
-    border-collapse: collapse;
+/*accueil*/
+.titre-accueil {
+    font-family: 'Playfair Display', serif;
+    color: var(--dore);
+    text-align: center;
+    padding: 30px 20px 10px;
+    font-size: 24px;
+}
+
+#grille-accueil {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    padding: 20px;
+}
+
+.carte-accueil {
+    background: var(--fond-carte);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 160px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px var(--ombre);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.carte-accueil:hover {
+    transform: translateY(-5px);
+}
+
+.carte-accueil p {
+    margin: 0;
+    color: var(--dore-clair);
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    text-align: center;
+}
+
+/*pour l affichage de coctails*/
+
+#grille-cocktails {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    padding: 20px;
+}
+
+.carte-cocktail {
+    background: var(--fond-carte);
+    border: none;
+    border-radius: 12px;
+    padding: 12px;
+    text-align: center;
+    cursor: pointer;
+    box-shadow: 0 8px 20px var(--ombre);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.carte-cocktail:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 28px rgba(201, 161, 90, 0.25);
+}
+
+.carte-cocktail p {
+    font-family: 'Playfair Display', serif;
+    color: var(--dore-clair);
+    margin: 10px 0 0;
+    font-size: 16px;
+}
+
+.carte-cocktail img {
     width: 100%;
-    max-width: 1200px; /* Évite que le tableau soit trop étiré sur grand écran */
-    margin: 30px auto; /* Centre le tableau et l'écarte du contenu du dessus */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Effet d'ombre léger */
+    height: 120px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+#grille-cocktails.cache {
+    display: none;
+}
+
+#detail-cocktail.cache {
+    display: none;
+}
+
+#detail-cocktail {
+    padding: 20px;
+}
+
+#bouton-retour {
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 15px;
+    color: var(--dore);
+    font-family: 'Inter', sans-serif;
+}
+
+#bouton-retour:hover {
+    color: var(--dore-clair);
+}
+
+#detail-contenu {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+#detail-photo {
+    width: 150px;
+    height: 200px;
+    object-fit: cover;
     border-radius: 8px;
-    overflow: hidden; /* Arrondit les angles du tableau */
 }
 
-/* Style des cellules de titre (En-têtes) */
-#tableau-csv-alcool th {
-    background-color: #f8f9fa;
-    color: #333;
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: 0.85rem;
-    letter-spacing: 0.5px;
-    padding: 16px 20px;
-    border-bottom: 2px solid #e9ecef;
-    text-align: left;
+#detail-ingredients {
+    flex: 1;
 }
 
-/* Style des cellules de données */
-#tableau-csv-alcool td {
-    padding: 16px 20px;
-    border-bottom: 1px solid #eee;
-    color: #495057;
-    vertical-align: middle;
+#detail-description {
+    margin-top: 20px;
 }
 
-/* Effet de survol sur les lignes */
-#tableau-csv-alcool tr:hover {
-    background-color: #fdfdfd;
-}
-
-/* Style spécifique pour l'image */
-#tableau-csv-alcool img {
+#recherche-cocktail {
+    width: 100%;
+    max-width: 400px;
     display: block;
-    max-width: 80px; /* Taille maximale de l'image */
-    height: auto;
-    border-radius: 6px; /* Angles légèrement arrondis sur l'image */
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Ombre douce sous l'image */
+    margin: 20px auto;
+    padding: 12px 18px;
+    background: var(--fond-carte);
+    border: 1px solid rgba(201, 161, 90, 0.3);
+    border-radius: 30px;
+    color: var(--texte-clair);
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+}
+
+#recherche-cocktail::placeholder {
+    color: var(--texte-attenue);
+}
+
+#recherche-cocktail:focus {
+    outline: none;
+    border-color: var(--dore);
 }
 
 main {

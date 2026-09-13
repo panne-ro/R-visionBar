@@ -1,49 +1,84 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html>
 
-    <head>
-        <title>All Alcohols and Spirits</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
+<head>
+    <title>All Alcohols and Spirits</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 
-    <body>
+<body>
 
-        <header>
-            <h1>All Alcohols and Spirits</h1>
-        </header>
+    <header>
+        <h1>All Alcohols and Spirits</h1>
+    </header>
 
-        <main>
-            <section id="accueil" class="page active">
-                <h2>Accueil</h2>
-            </section>
+    <main>
 
-            <section id="cocktail" class="page">
-                <h2>Cocktails</h2>
-				<table id="tableau-csv-alcool"></table>
-            </section>
+        <section id="accueil" class="page active">
+            <h1 class="titre-accueil">All Alcohols & Spirits</h1>
 
-            <section id="spiritueux" class="page">
-                <h2>Spiritueux</h2>
-            </section>
+            <div id="grille-accueil">
+                <div class="carte-accueil" data-target="cocktail">
+                    <p>Cocktails</p>
+                </div>
 
-            <section id="tiktok" class="page">
-                <h2>Tiktok</h2>
-            </section>
+                <div class="carte-accueil" data-target="spiritueux">
+                    <p>Spiritueux</p>
+                </div>
 
-            <section id="quizz" class="page">
-                <h2>Quizz</h2>
-            </section>
+                <div class="carte-accueil" data-target="tiktok">
+                    <p>Découverte</p>
+                </div>
 
-        </main>
+                <div class="carte-accueil" data-target="quizz">
+                    <p>Quizz</p>
+                </div>
+            </div>
+        </section>
 
-        <nav id="menu">
-            <button data-target="accueil">Accueil</button>
-            <button data-target="cocktail">Cocktails</button>
-            <button data-target="spiritueux">Spiritueux</button>
-            <button data-target="tiktok">Tiktok</button>
-            <button data-target="quizz">Quizz</button>
-        </nav>
-        <script src="script.js"></script>
-    </body>
+        <section id="cocktail" class="page">
+            <input type="text" id="recherche-cocktail" placeholder="Rechercher un cocktail...">
+
+            <div id="grille-cocktails">
+                <!-- Les cartes seront générées ici en JavaScript -->
+            </div>
+
+            <div id="detail-cocktail" class="cache">
+                <button id="bouton-retour">← Retour</button>
+
+                <h2 id="detail-nom"></h2>
+
+                <div id="detail-contenu">
+                    <img id="detail-photo" src="" alt="">
+                    <p id="detail-ingredients"></p>
+                </div>
+
+                <p id="detail-description"></p>
+            </div>
+        </section>
+
+        <section id="spiritueux" class="page">
+            <h2>Spiritueux</h2>
+        </section>
+
+        <section id="tiktok" class="page">
+            <h2>Tiktok</h2>
+        </section>
+
+        <section id="quizz" class="page">
+            <h2>Quizz</h2>
+        </section>
+
+    </main>
+
+    <nav id="menu">
+        <button data-target="accueil">Accueil</button>
+        <button data-target="cocktail">Cocktails</button>
+        <button data-target="spiritueux">Spiritueux</button>
+        <button data-target="tiktok">Tiktok</button>
+        <button data-target="quizz">Quizz</button>
+    </nav>
+
+    <script src="script.js"></script>
+</body>
 </html>
-    

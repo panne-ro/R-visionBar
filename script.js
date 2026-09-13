@@ -12,30 +12,85 @@ boutons.forEach(function(bouton){
     });
 });
 
+/*accueil*/
+document.querySelectorAll('.carte-accueil').forEach(function(carte) {
+    carte.addEventListener('click', function() {
+        const cible = carte.dataset.target;
+
+        pages.forEach(function(page) {
+            page.classList.remove('active');
+        });
+
+        document.getElementById(cible).classList.add('active');
+    });
+});
+
+/*cocktails*/
 fetch('./src/alcool.csv')
 	.then(response => response.text())
 		.then(csvTexte => {
-			const tableau = document.getElementById('tableau-csv-alcool');
-			let html = '';
 			const lignes = csvTexte.trim().split('\n');
-				lignes.forEach((ligne, index) => {
-				const colonnes = ligne.split(','); 
-				
-				html += '<tr>';
-				colonnes.forEach((cellule, numColonne) => {
-					const texteNettoye = cellule.trim();
-					if (index === 0) {
-						html += `<th>${cellule.trim()}</th>`;
-					} else {
-						if (numColonne === 1) {
-							html += `<td><img src="${texteNettoye}" alt="Image produit" style="max-width: 100px; height: auto;"></td>`;
-						} else {
-							html += `<td>${cellule.trim()}</td>`;
-						}
-					}
-				});
-				html += '</tr>';
+			let cocktails = [];
+
+			lignes.forEach((ligne, index) => {
+				if (index === 0) return;
+				const colonnes = ligne.split(';');
+				const cocktail = {
+					nom: colonnes[0].trim(),
+					photo: colonnes[1].trim(),
+					description: colonnes[2].trim(),
+					recette: colonnes[3].trim()
+				};
+				cocktails.push(cocktail);
 			});
-			tableau.innerHTML = html;
-		})
-		.catch(erreur => console.error("Impossible de charger le CSV :", erreur));
+			const grille = document.getElementById('grille-cocktails');
+			const detail = document.getElementById('detail-cocktail');
+			function afficherGrille(liste) {
+				grille.innerHTML = '';
+
+				liste.forEach(function(cocktail, index) {
+					const carte = document.createElement('div');
+					carte.className = 'carte-cocktail';
+					carte.innerHTML = `
+						<img src="${cocktail.photo}" alt="${cocktail.nom}">
+						<p>${cocktail.nom}</p>
+					`;
+
+					carte.addEventListener('click', function() {
+						afficherDetail(index);
+					});
+
+					grille.appendChild(carte);
+				});
+			}
+
+			function afficherDetail(index) {
+				const cocktail = cocktails[index];
+
+				document.getElementById('detail-nom').textContent = cocktail.nom;
+				document.getElementById('detail-photo').src = cocktail.photo;
+				document.getElementById('detail-photo').alt = cocktail.nom;
+				document.getElementById('detail-ingredients').textContent = cocktail.recette;
+				document.getElementById('detail-description').textContent = cocktail.description;
+
+				grille.classList.add('cache');
+				detail.classList.remove('cache');
+			}
+
+			document.getElementById('bouton-retour').addEventListener('click', function() {
+				detail.classList.add('cache');
+				grille.classList.remove('cache');
+			});
+			document.getElementById('recherche-cocktail').addEventListener('input', function() {
+				const texteTape = this.value.toLowerCase();
+
+				const cocktailsFiltres = cocktails.filter(function(cocktail) {
+					return cocktail.nom.toLowerCase().includes(texteTape);
+				});
+
+				afficherGrille(cocktailsFiltres);
+			});
+
+			afficherGrille(cocktails);
+					})
+			.catch(erreur => console.error("Impossible de charger le CSV :", erreur));
