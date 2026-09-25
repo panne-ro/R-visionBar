@@ -162,6 +162,13 @@ header h1 {
     color: var(--dore-clair);
 }
 
+#detail-nom {
+    font-family: 'Playfair Display', serif;
+    color: var(--dore);
+    font-size: 26px;
+    margin: 0 0 15px;
+}
+
 #detail-contenu {
     display: flex;
     gap: 20px;
@@ -177,6 +184,7 @@ header h1 {
 
 #detail-ingredients {
     flex: 1;
+    white-space: pre-line;
 }
 
 #detail-description {
@@ -206,6 +214,75 @@ header h1 {
     border-color: var(--dore);
 }
 
+.label-detail {
+    font-family: 'Playfair Display', serif;
+    color: var(--dore);
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 0 0 6px;
+}
+
+/* TikTok Feed */
+#tiktok {
+    padding: 0;
+    height: 100%;
+}
+
+#feed-tiktok {
+    height: 100%;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+}
+
+.carte-tiktok {
+    height: 100%;
+    scroll-snap-align: start;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    background-size: cover;
+    background-position: center;
+    background-color: var(--fond-carte);
+}
+
+.carte-tiktok::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 40%, transparent 70%);
+}
+
+.carte-tiktok-texte {
+    position: relative;
+    z-index: 1;
+    padding: 30px;
+    color: var(--texte-clair);
+}
+
+.carte-tiktok-texte h2 {
+    font-family: 'Playfair Display', serif;
+    color: var(--dore-clair);
+    font-size: 28px;
+    margin: 0 0 10px;
+}
+
+.carte-tiktok-texte p {
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--texte-clair);
+    max-width: 90%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
 main {
+    flex: 1;
     padding-bottom: 60px;
+    overflow: hidden;
 }

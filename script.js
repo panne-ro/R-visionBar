@@ -70,11 +70,39 @@ fetch('./src/alcool.csv')
 				document.getElementById('detail-nom').textContent = cocktail.nom;
 				document.getElementById('detail-photo').src = cocktail.photo;
 				document.getElementById('detail-photo').alt = cocktail.nom;
-				document.getElementById('detail-ingredients').textContent = cocktail.recette;
+				document.getElementById('detail-ingredients').textContent = cocktail.recette.replace(/\\n/g, '\n');
 				document.getElementById('detail-description').textContent = cocktail.description;
 
 				grille.classList.add('cache');
 				detail.classList.remove('cache');
+			}
+
+			function afficherTiktok() {
+				const feed = document.getElementById('feed-tiktok');
+				feed.innerHTML = '';
+
+				cocktails.forEach(function(cocktail, index) {
+					const carte = document.createElement('div');	
+					carte.className = 'carte-tiktok';
+					carte.style.backgroundImage = `url('${cocktail.photo}')`;
+
+					carte.innerHTML = `
+						<div class="carte-tiktok-texte">
+							<h2>${cocktail.nom}</h2>
+							<p>${cocktail.description}</p>
+						</div>
+					`;
+
+					carte.addEventListener('click', function() {
+						pages.forEach(function(page) {
+							page.classList.remove('active');
+						});
+						document.getElementById('cocktail').classList.add('active');
+						afficherDetail(index);
+					});
+
+					feed.appendChild(carte);
+				});
 			}
 
 			document.getElementById('bouton-retour').addEventListener('click', function() {
@@ -92,5 +120,6 @@ fetch('./src/alcool.csv')
 			});
 
 			afficherGrille(cocktails);
+			afficherTiktok();
 					})
 			.catch(erreur => console.error("Impossible de charger le CSV :", erreur));
